@@ -92,9 +92,7 @@ if (playlist.tracks.includes(trackId)) {
 playlist.tracks.push(trackId);
 console.log(`Added track ${trackId} to playlist ${playlistId}`);
 }
-//testing
-addTrackToPlaylist("t03", "p01");
-console.log(library.playlists["p01"].tracks);
+
 
 
 
@@ -107,8 +105,16 @@ const generateUid = function() {
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
-
-}
+const newTrackId = generateUid();
+library.tracks[newTrackId] = {
+       id: newTrackId,
+       name: name,
+       artist: artist,
+       album:  album,
+       
+};
+console.log(`added track ${newTrackId}: ${name} by ${artist} (${album})`)
+};
 
 
 // adds a playlist to the library
