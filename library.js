@@ -38,7 +38,7 @@ for (const playlistID in playlists) {
        console.log(currentPlaylist.id + ": " + currentPlaylist.name + " - " + trackNumber + " tracks");
 }
 }
-printPlaylists();
+
 
 // prints a list of all tracks, using the following format:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
@@ -60,8 +60,24 @@ for (let tracksID in tracks) {
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 const printPlaylist = function(playlistId) {
-
+       //get playlist with variable using playlistId
+       const playlist = library.playlists[playlistId];
+       //log playlist stuff needed
+  console.log(playlistId + ": " + playlist.name + " - " + playlist.tracks.length + " tracks");
+//loop through track ids in playlist with for loop
+  for (let i = 0; i < playlist.tracks.length; i++) {
+       //find matching track id in tracks object
+    const trackId = playlist.tracks[i];
+    const track = library.tracks[trackId];
+    //if track exists, log info to console
+    if (track) {
+      console.log(trackId + ": " + track.name + " by " + track.artist + " (" + track.album + ")");
+    }
+  }
 }
+       //test
+       printPlaylist("p01");
+
 
 
 // adds an existing track to an existing playlist
